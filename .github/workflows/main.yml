@@ -21,7 +21,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         git remote rm origin
-        git remote add https://gitlab.com/commento/commento.git
+        git remote add origin https://gitlab.com/commento/commento.git
         git checkout master
         git branch -m master-holder
         git fetch
