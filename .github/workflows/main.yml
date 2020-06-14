@@ -18,29 +18,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Run commands to update
-      run: |
-        cd $GITHUB_WORKSPACE
-        echo Setting config
-        git config --global user.email "actions@github.com"
-        git config --global user.name "GitHub Actions"
-        echo Replacing origin
-        git remote rm origin
-        git remote add origin https://gitlab.com/commento/commento.git
-        echo Checking out master
-        git checkout master
-        echo Branching
-        git branch -m master-holder
-        echo Fetching
-        git fetch
-        echo Checking out new master
-        git checkout master
-        echo Pulling new master from new origin
-        git pull origin master
-        echo merging.....
-        git merge master-holder --allow-unrelated-histories
-        echo removing new origin back to github
-        git remote rm origin
-        git remote add https://github.com/sm-test-star/commento-heroku.git
+      run: bash update.sh -xe
 
     - name: Push changes
       uses: ad-m/github-push-action@master
