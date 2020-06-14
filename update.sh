@@ -27,7 +27,7 @@ echo Pulling new master from new origin
 git pull origin master
 
 echo Merging.....
-git merge master-holder --allow-unrelated-histories
+git merge-recursive master-holder --allow-unrelated-histories
 
 echo Removing new origin back to github
 git remote rm origin
