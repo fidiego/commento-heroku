@@ -20,6 +20,9 @@ jobs:
     - name: Run commands to update
       run: |
         cd $GITHUB_WORKSPACE
+        git config --global user.email "actions@github.com"
+        git config --global user.name "GitHub Actions"
+        git config pull.rebase false
         git remote rm origin
         git remote add origin https://gitlab.com/commento/commento.git
         git checkout master
