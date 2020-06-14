@@ -20,6 +20,7 @@ jobs:
     - name: Run commands to update
       run: |
         cd $GITHUB_WORKSPACE
+        ls -lah
         git config --global user.email "actions@github.com"
         git config --global user.name "GitHub Actions"
         git remote rm origin
