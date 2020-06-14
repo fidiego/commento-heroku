@@ -1,0 +1,37 @@
+name: Update from gitlab
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  issue_comment:
+    types: [created, edited]
+  repository_dispatch:
+    types: [run_update]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Run commands to update
+      run: |
+        cd $GITHUB_WORKSPACE
+        git remote rm origin
+        git remote add https://gitlab.com/commento/commento.git
+        git checkout master
+        git branch -m master-holder
+        git fetch
+        git checkout master
+        git pull origin master
+        git merge master-holder --allow-unrelated-histories
+        git remote rm origin
+        git remote add https://github.com/sm-test-star/commento-heroku.git
+
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
