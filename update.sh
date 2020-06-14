@@ -27,8 +27,8 @@ echo Pulling new master from new origin
 git pull origin master
 
 echo Merging.....
-git merge-recursive master-holder --allow-unrelated-histories
+git merge -s recursive master-holder --allow-unrelated-histories
 
 echo Removing new origin back to github
-git remote rm origin
-git remote add origin https://github.com/sm-test-star/commento-heroku.git
+#git remote rm origin
+#git remote add origin https://github.com/sm-test-star/commento-heroku.git
