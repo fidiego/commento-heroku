@@ -5,8 +5,6 @@ git config --global user.email "actions@github.com"
 git config --global user.name "GitHub Actions"
 git config pull.rebase true
 
-git log
-
 echo Replacing origin
 git remote rm origin
 git remote add origin https://gitlab.com/commento/commento.git
@@ -26,8 +24,11 @@ git checkout master
 echo Pulling new master from new origin
 git pull origin master
 
+git diff master master-holder -- templates/email-notification.txt
+
 echo Merging.....
 git merge -s recursive master-holder --allow-unrelated-histories
+
 
 echo Removing new origin back to github
 #git remote rm origin
