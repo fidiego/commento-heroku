@@ -3,7 +3,9 @@
 echo Setting config
 git config --global user.email "actions@github.com"
 git config --global user.name "GitHub Actions"
-git config pull.rebase true 
+git config pull.rebase true
+
+git log
 
 echo Replacing origin
 git remote rm origin
